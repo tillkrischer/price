@@ -1,16 +1,33 @@
 import { Low, JSONFile } from 'lowdb';
 
 type Data = {
-  prices: number[];
+  [key: string]: {
+    [key: string]: number;
+  };
 };
 
-export const init = async () => {
-  const filename = process.env.DB_FILE;
-  if (filename) {
-    const adapter = new JSONFile<Data>(filename);
-    const db = new Low<Data>(adapter);
+export class DB {
+  adapter: JSONFile<Data>;
+
+  db: Low<Data>;
+
+  constructor(filename: string) {
+    this.adapter = new JSONFile(filename);
+    this.db = new Low(this.adapter);
+  }
+
+  async init() {
+    const { db } = this;
     await db.read();
-    db.data ||= { prices: [] };
+    db.data ||= {};
     await db.write();
   }
-};
+
+  async read() {
+    const { db } = this;
+    await db.read();
+    return db.data;
+  }
+}
+
+export default DB;

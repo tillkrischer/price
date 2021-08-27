@@ -1,13 +1,24 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import DB from './db.js';
 
-export const start = () => {
-  const app = express();
+export class Server {
+  db: DB;
 
-  app.use('/', express.static('public'));
+  constructor(db: DB) {
+    this.db = db;
+  }
 
-  app.get('/api', (req, res) => {
-    res.send('Hello World!');
-  });
+  async get(res: Response) {
+    const data = await this.db.read();
+    res.send(data);
+  }
 
-  app.listen(4000);
-};
+  start() {
+    const app = express();
+    app.use('/', express.static('public'));
+    app.get('/api/get', (req: Request, res: Response) => this.get(res));
+    app.listen(4000);
+  }
+}
+
+export default Server;
