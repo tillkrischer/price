@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node build/index.js",
+    "start": "yarn build && env-cmd -e prod node build/index.js",
     "start:dev": "nodemon"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "@types/node": "^16.7.3",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
+    "env-cmd": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-airbnb-typescript": "^14.0.0",
