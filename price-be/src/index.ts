@@ -1,3 +1,7 @@
-import { start } from './server';
+// import { start } from './server';
 
-start();
+import { init } from './db';
+
+// start();
+
+init();
