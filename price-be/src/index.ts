@@ -7,7 +7,7 @@ const start = () => {
     return;
   }
   const port = Number(process.env.PORT);
-  if (port > 0) {
+  if (!port || port === 0) {
     return;
   }
   const db = new DB(filename);
