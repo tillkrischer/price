@@ -2,6 +2,7 @@
   "name": "price-be",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "yarn build && env-cmd -e prod node build/index.js",

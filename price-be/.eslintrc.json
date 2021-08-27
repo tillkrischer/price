@@ -10,22 +10,10 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".ts"]
-      }
-    }
-  },
   "ignorePatterns": ["build"],
   "rules": {
     "import/prefer-default-export": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never"
-      }
-    ]
+    "import/extensions": "off",
+    "import/no-unresolved": "off"
   }
 }

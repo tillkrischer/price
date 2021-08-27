@@ -1,6 +1,6 @@
 // import { start } from './server';
 
-import { init } from './db';
+import { init } from './db.js';
 
 // start();
 
