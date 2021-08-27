@@ -6,8 +6,12 @@ const start = () => {
   if (!filename) {
     return;
   }
+  const port = Number(process.env.PORT);
+  if (port > 0) {
+    return;
+  }
   const db = new DB(filename);
-  const server = new Server(db);
+  const server = new Server(db, port);
   server.start();
 };
 

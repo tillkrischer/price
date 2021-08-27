@@ -5,8 +5,11 @@ import DB from './db.js';
 export class Server {
   db: DB;
 
-  constructor(db: DB) {
+  port: number;
+
+  constructor(db: DB, port: number) {
     this.db = db;
+    this.port = port;
   }
 
   async get(res: Response) {
@@ -21,7 +24,7 @@ export class Server {
     }
     app.use('/', express.static('public'));
     app.get('/api/get', (req: Request, res: Response) => this.get(res));
-    app.listen(4000);
+    app.listen(this.port);
   }
 }
 
