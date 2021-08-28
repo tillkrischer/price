@@ -29,7 +29,7 @@ class Selenium {
   async init() {
     this.driver = await new Builder()
       .forBrowser('firefox')
-      // .setFirefoxOptions(new firefox.Options().headless().windowSize({ width: 640, height: 480 }))
+      .setFirefoxOptions(new firefox.Options().headless().windowSize({ width: 640, height: 480 }))
       .build();
   }
 
