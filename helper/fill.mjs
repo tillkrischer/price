@@ -4,7 +4,7 @@ const names = ["3090", "3080 Ti", "3080", "3070 Ti", "3070", "3060 Ti", "3060"];
 const obj = {};
 
 const data = fs.readFileSync("fill.csv", "utf-8");
-for (let line of data.split("\r\n")) {
+for (let line of data.split("\n")) {
   const entries = line.split(",");
   if (entries.length > 1) {
     const [month, day, year] = entries[0].split("/");
