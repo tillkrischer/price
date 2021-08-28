@@ -6,18 +6,22 @@ import styled from 'styled-components';
 import { Data, get } from './client';
 
 const Table = styled.table`
-  border: 1px solid black;
+  border: 2px solid black;
   border-collapse: collapse;
 `;
 
 const TableHead = styled.th`
-  border: 1px solid black;
+  border: 2px solid black;
 `;
 
 const TableCell = styled.td`
-  border: 1px solid black;
+  border: 2px solid black;
   width: 10rem;
   text-align: end;
+`;
+
+const TableRow = styled.tr`
+  border: 2px solid black;
 `;
 
 const ColorTableCell = styled(TableCell)`
@@ -118,26 +122,28 @@ const PriceTable = (props: { data: Data | null }) => {
   const { data } = props;
   return (
     <Table>
-      <tr>
-        <TableHead>Date</TableHead>
-        {columns.map((col) => (
-          <TableHead>{col}</TableHead>
-        ))}
-      </tr>
+      <thead>
+        <TableRow>
+          <TableHead>Date</TableHead>
+          {columns.map((col) => (
+            <TableHead key={col}>{col}</TableHead>
+          ))}
+        </TableRow>
+      </thead>
       <tbody>
         {data &&
           Object.entries(data).map(([date, values]) => {
             return (
-              <tr>
+              <TableRow key={date}>
                 <TableCell>{date}</TableCell>
                 {columns.map((col) => {
                   let value = values[col];
                   if (value !== null && value !== undefined) {
-                    return <TableCell>{Math.round(value)}</TableCell>;
+                    return <TableCell key={col}>{Math.round(value)}</TableCell>;
                   }
-                  return <TableCell />;
+                  return <TableCell key={col} />;
                 })}
-              </tr>
+              </TableRow>
             );
           })}
       </tbody>
@@ -167,27 +173,33 @@ const ValueTable = (props: {
   const { data, minValue, maxValue } = props;
   return (
     <Table>
-      <tr>
-        <TableHead>Date</TableHead>
-        {columns.map((col) => (
-          <TableHead>{col}</TableHead>
-        ))}
-      </tr>
+      <thead>
+        <TableRow>
+          <TableHead>Date</TableHead>
+          {columns.map((col) => (
+            <TableHead key={col}>{col}</TableHead>
+          ))}
+        </TableRow>
+      </thead>
       <tbody>
         {data &&
           Object.entries(data).map(([date, values]) => {
             return (
-              <tr>
+              <TableRow key={date}>
                 <TableCell>{date}</TableCell>
                 {columns.map((col) => {
                   const value = values[col];
                   if (value && minValue && maxValue) {
                     const color = computeColor(value, minValue, maxValue);
-                    return <ColorTableCell color={color}>{value.toFixed(5)}</ColorTableCell>;
+                    return (
+                      <ColorTableCell key={col} color={color}>
+                        {value.toFixed(5)}
+                      </ColorTableCell>
+                    );
                   }
-                  return <TableCell />;
+                  return <TableCell key={col} />;
                 })}
-              </tr>
+              </TableRow>
             );
           })}
       </tbody>
