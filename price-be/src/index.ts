@@ -4,7 +4,7 @@ import DB from './db.js';
 import { update } from './selenium.js';
 
 const setUpSchedule = (db: DB) => {
-  schedule.scheduleJob('35 * * * *', async () => {
+  schedule.scheduleJob('0 9 * * *', async () => {
     // eslint-disable-next-line no-console
     console.log(new Date(), 'running update');
     const [date, obj] = await update();
