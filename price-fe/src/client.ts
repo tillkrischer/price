@@ -9,6 +9,10 @@ export type Data = {
 };
 
 export const get = async () => {
-  const data = await fetch(base + 'api/get').then((res) => res.json());
+  const data = await fetch(base + 'api/get')
+    .then((res) => res.json())
+    .then((data) => {
+      return data as Data;
+    });
   return data;
 };
