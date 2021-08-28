@@ -32,9 +32,9 @@ export class Server {
     }
     app.use('/', express.static('public'));
     app.get('/api/get', (req: Request, res: Response) => this.get(res));
-    // if (process.env.MANUAL_UPDATE) {
-    app.get('/api/update', (req: Request, res: Response) => this.update(res));
-    // }
+    if (process.env.MANUAL_UPDATE) {
+      app.get('/api/update', (req: Request, res: Response) => this.update(res));
+    }
     app.listen(this.port);
   }
 }
