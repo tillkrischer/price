@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import DB from './db.js';
-import update from './client.js';
+import { update } from './selenium.js';
 
 export class Server {
   db: DB;
@@ -13,8 +13,10 @@ export class Server {
     this.port = port;
   }
 
-  static async update(res: Response) {
-    await update();
+  async update(res: Response) {
+    const { db } = this;
+    const [date, obj] = await update();
+    await db.add(date, obj);
     res.send('ok');
   }
 
@@ -30,7 +32,7 @@ export class Server {
     }
     app.use('/', express.static('public'));
     app.get('/api/get', (req: Request, res: Response) => this.get(res));
-    app.get('/api/update', (req: Request, res: Response) => Server.update(res));
+    app.get('/api/update', (req: Request, res: Response) => this.update(res));
     app.listen(this.port);
   }
 }

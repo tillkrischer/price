@@ -23,7 +23,8 @@
     "express": "^4.17.1",
     "jsdom": "^17.0.0",
     "lowdb": "^2.1.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "selenium-webdriver": "^4.0.0-beta.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -31,6 +32,7 @@
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.7.3",
     "@types/node-fetch": "^2.5.12",
+    "@types/selenium-webdriver": "^4.0.15",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "eslint": "^7.32.0",

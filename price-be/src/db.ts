@@ -1,9 +1,11 @@
 import { Low, JSONFile } from 'lowdb';
 
-type Data = {
-  [key: string]: {
-    [key: string]: number;
-  };
+export type Entry = {
+  [key: string]: number | null;
+};
+
+export type Data = {
+  [key: string]: Entry;
 };
 
 export class DB {
@@ -27,6 +29,16 @@ export class DB {
     const { db } = this;
     await db.read();
     return db.data;
+  }
+
+  async add(date: string, obj: Entry) {
+    const { db } = this;
+    await db.read();
+    db.data ||= {};
+    if (!(date in db.data)) {
+      db.data[date] = obj;
+      await db.write();
+    }
   }
 }
 
