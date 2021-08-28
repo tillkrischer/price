@@ -16,8 +16,8 @@ const cards: { [key: string]: string } = {
 
 const dateString = () => {
   const date = new Date();
-  const paddedDay = date.getDay().toString().padStart(2, '0');
-  const paddedMonth = date.getMonth().toString().padStart(2, '0');
+  const paddedDay = date.getDate().toString().padStart(2, '0');
+  const paddedMonth = (date.getMonth() + 1).toString().padStart(2, '0');
   const year = date.getFullYear();
   const datestring = `${year}-${paddedMonth}-${paddedDay}`;
   return datestring;
@@ -29,7 +29,7 @@ class Selenium {
   async init() {
     this.driver = await new Builder()
       .forBrowser('firefox')
-      .setFirefoxOptions(new firefox.Options().headless().windowSize({ width: 640, height: 480 }))
+      // .setFirefoxOptions(new firefox.Options().headless().windowSize({ width: 640, height: 480 }))
       .build();
   }
 
@@ -59,6 +59,7 @@ class Selenium {
     const { driver } = this;
     try {
       if (driver) {
+        await new Promise((r) => setTimeout(r, 5000));
         await driver.get(base + cards[card]);
         await driver.wait(until.elementLocated(By.className('pprice')), 5000);
         const elements = await driver.findElements(By.className('pprice'));
@@ -81,6 +82,8 @@ class Selenium {
       obj[card] = price;
     }
     const date = dateString();
+    // eslint-disable-next-line no-console
+    console.log(obj);
     return [date, obj];
   }
 }
