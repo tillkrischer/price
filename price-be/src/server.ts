@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import DB from './db.js';
+import update from './client.js';
 
 export class Server {
   db: DB;
@@ -10,6 +11,11 @@ export class Server {
   constructor(db: DB, port: number) {
     this.db = db;
     this.port = port;
+  }
+
+  static async update(res: Response) {
+    await update();
+    res.send('ok');
   }
 
   async get(res: Response) {
@@ -24,6 +30,7 @@ export class Server {
     }
     app.use('/', express.static('public'));
     app.get('/api/get', (req: Request, res: Response) => this.get(res));
+    app.get('/api/update', (req: Request, res: Response) => Server.update(res));
     app.listen(this.port);
   }
 }
