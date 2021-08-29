@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { useMemo } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+
 import { Data, get } from './client';
 
 const Table = styled.table`
@@ -99,14 +100,7 @@ export const App = () => {
   return (
     <RootContainer>
       <SideContainer>
-        <div onChange={onModeChange}>
-          <div>
-            <input type="radio" value="price" name="mode" defaultChecked /> Price
-          </div>
-          <div>
-            <input type="radio" value="value" name="mode" /> Value
-          </div>
-        </div>
+        <ModeRadioButtons onModeChange={onModeChange} />
       </SideContainer>
       {mode === 'price' ? (
         <PriceTable data={data} />
@@ -115,6 +109,22 @@ export const App = () => {
       )}
       <SideContainer />
     </RootContainer>
+  );
+};
+
+const ModeRadioButtons = (props: { onModeChange: (e: any) => void }) => {
+  const { onModeChange } = props;
+  return (
+    <div onChange={onModeChange}>
+      <div>
+        <input type="radio" value="price" name="mode" defaultChecked />
+        <label>Price</label>
+      </div>
+      <div>
+        <input type="radio" value="value" name="mode" />
+        <label>Value</label>
+      </div>
+    </div>
   );
 };
 
