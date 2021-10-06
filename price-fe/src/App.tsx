@@ -1,22 +1,10 @@
 import { useState } from 'react';
 import { useCallback } from 'react';
 import { useEffect } from 'react';
-import styled from 'styled-components';
 
 import { Data, get } from './client';
 import { PriceTable } from './PriceTable';
 import { ValueTable } from './ValueTable';
-
-const RootContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-`;
-
-const ContentContainer = styled.div`
-  width: 800px;
-`;
 
 export const App = () => {
   const [data, setData] = useState<Data | null>(null);
@@ -35,19 +23,10 @@ export const App = () => {
   }, []);
 
   return (
-    // <RootContainer>
-    //   <SideContainer>
-    //     <ModeRadioButtons onModeChange={onModeChange} />
-    //   </SideContainer>
-    //   {mode === 'price' ? <PriceTable data={data} /> : <ValueTable data={data} />}
-    //   <SideContainer />
-    // </RootContainer>
-    <RootContainer>
-      <ContentContainer>
-        <ModeRadioButtons onModeChange={onModeChange} />
-        {mode === 'price' ? <PriceTable data={data} /> : <ValueTable data={data} />}
-      </ContentContainer>
-    </RootContainer>
+    <div>
+      <ModeRadioButtons onModeChange={onModeChange} />
+      {mode === 'price' ? <PriceTable data={data} /> : <ValueTable data={data} />}
+    </div>
   );
 };
 
