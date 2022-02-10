@@ -19,7 +19,7 @@ const ColorTableCell = styled(TableCell)`
   background-color: ${(props) => props.color};
 `;
 
-const columns = ['3090', '3080 Ti', '3080', '3070 Ti', '3070', '3060 Ti', '3060'];
+const columns = ['3090', '3080 Ti', '3080', '3070 Ti', '3070', '3060 Ti', '3060', '3050'];
 
 const relValues: { [key: string]: number } = {
   '3090': 240,
@@ -29,6 +29,7 @@ const relValues: { [key: string]: number } = {
   '3070': 158,
   '3060 Ti': 135,
   '3060': 100,
+  '3050': 72,
 };
 
 export const ValueTable = (props: { data: Data | null }) => {

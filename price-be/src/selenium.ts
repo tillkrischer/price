@@ -12,6 +12,7 @@ const cards: { [key: string]: string } = {
   '3070': 'GeForce+RTX+fuer+Gaming/RTX+3070.html',
   '3060 Ti': 'GeForce+RTX+fuer+Gaming/RTX+3060+Ti.html',
   '3060': 'GeForce+RTX+fuer+Gaming/RTX+3060.html',
+  '3050': 'GeForce+RTX+fuer+Gaming/RTX+3050.html',
 };
 
 const dateString = () => {
