@@ -5,6 +5,7 @@ import { Entry } from './db';
 const base = 'https://www.mindfactory.de/Hardware/Grafikkarten+(VGA)/';
 
 const cards: { [key: string]: string } = {
+  '3090 Ti': 'GeForce+RTX+fuer+Gaming/RTX+3090+Ti.html',
   '3090': 'GeForce+RTX+fuer+Gaming/RTX+3090.html',
   '3080 Ti': 'GeForce+RTX+fuer+Gaming/RTX+3080+Ti.html',
   '3080': 'GeForce+RTX+fuer+Gaming/RTX+3080.html',

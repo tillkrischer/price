@@ -14,7 +14,7 @@ const TableCell = styled.td`
 
 const TableRow = styled.tr``;
 
-const columns = ['3090', '3080 Ti', '3080', '3070 Ti', '3070', '3060 Ti', '3060', '3050'];
+const columns = ['3090 Ti', '3090', '3080 Ti', '3080', '3070 Ti', '3070', '3060 Ti', '3060', '3050'];
 
 export const PriceTable = (props: { data: Data | null }) => {
   const { data } = props;
