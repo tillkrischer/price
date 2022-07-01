@@ -19,9 +19,10 @@ const ColorTableCell = styled(TableCell)`
   background-color: ${(props) => props.color};
 `;
 
-const columns = ['3090', '3080 Ti', '3080', '3070 Ti', '3070', '3060 Ti', '3060', '3050'];
+const columns = ['3090 Ti', '3090', '3080 Ti', '3080', '3070 Ti', '3070', '3060 Ti', '3060', '3050'];
 
 const relValues: { [key: string]: number } = {
+  '3090 Ti': 272,
   '3090': 240,
   '3080 Ti': 239,
   '3080': 209,
