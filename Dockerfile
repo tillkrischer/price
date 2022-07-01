@@ -19,7 +19,7 @@ COPY price-be/.env-cmdrc.json ./
 COPY price-be/tsconfig.json ./
 RUN yarn build
 
-FROM ubuntu
+FROM ubuntu:20.04
 WORKDIR /usr/src/app
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
